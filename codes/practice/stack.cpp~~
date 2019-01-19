@@ -1,0 +1,60 @@
+#include <iostream>
+#include<>
+#include<>
+using namespace std;
+/*template<class T>
+class treenode
+{
+friend class tree;
+T t;
+treenode *right;
+treenode *left;
+}*/
+ template<class T>
+ class node
+ {
+ friend class list;
+ T data;
+ node *next;
+ };
+class stack
+ {
+  node *tops;
+ public:
+  stack(){tops=NULL}
+  void push(node *n)
+  {
+   if(tops==NULL)
+      tops=n;
+   else
+      {
+      n->next=tops;
+      tops=n;
+      }     
+  }
+  t pop()
+  {
+   if(tops==NULL)
+    cout<<"Stack Underflow";
+   else
+    {
+    t *n;n=tops;
+    tops=tops->next;
+    cout<<n->data;
+    delete n; 
+    } 
+  }
+};
+
+
+int main()
+{
+ do
+  {
+   
+  
+  }while(1);
+return 0;
+}
+
+

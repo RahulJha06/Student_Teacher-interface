@@ -1,0 +1,27 @@
+Work-break-down structure:
+1.Creating an interface for information storing and viewing by the users.
+ a.Admin interface
+  ====>Allowing registration of system admins.
+  ====>Setting up the Admin rights and access to the database.
+  ====>Allow adding of new admins through sys admin.
+b.Teacher interface
+ ====>Registering a teacher.
+ ====>Acquiring information about the teacher required by the student.
+ ====>Displaying information about the student that a teacher could require.
+c.Student interface
+ ====>Adding a new student
+ ====>Editing the student's details.
+ ====>Storing the student's details.
+                  ====================
+2.Setting the features provided to the three interfaces.
+ ====>Timetable(display,creation).
+ ====>Marks(display,create and store).
+ ====>Attendance(Display,add and store).
+                  ====================
+3.Setting up the data base required for the three interface.
+    ===>Deciding the format in which the data is stored.
+    ===>Deciding where the data is to be stored.
+    ===>Deciding the privileges required to view a certain set of data.
+    ===>Deciding which data to be stored in encrypted format and which data to be left in plain text.
+    ===>Deciding on online connectivity.
+                  ====================

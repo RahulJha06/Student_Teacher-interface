@@ -1,0 +1,15 @@
+1.Index file read is working
+2.File reading sanitized is working
+3.Can read as well as write an entire objects data at one go.
+4
+
+
+
+
+
+
+
+string name;
+int roll_no;
+string phone_no;
+string mail_id;

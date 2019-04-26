@@ -1,0 +1,9 @@
+#In iomanip there is a function called setw(); that dedicates a field to c++ output stream and helps form a cell for my output
+#In the same there is also setprecison() to set the number of decimals to which a value will be printed.
+#Data format:
+#Name:Password:Phone-Number
+rahul:1111
+asmita:2222
+amruta:5555
+dakshita:4444
+Ra:xyz:789

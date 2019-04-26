@@ -1,0 +1,3 @@
+Name:roll_no:phone_no:mail_id:
+//Example
+Rahul:51:5328749:rahul.17u652@viit.ac.in:

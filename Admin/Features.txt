@@ -1,0 +1,19 @@
+->Read from a list of admin names inside a file.(Done)
+->Make the table for output.
+->Set everyone's privilege.
+->Think who is going to set the admins.
+->Admin log-in.
+->Format for every step; how the dispay is printed.
+->
+->Decide who registers a student.=============Register a student.
+===============Extra Features===================
+->Registering the teachers
+->Generating GR.NUMBERS.
+->Deciding the division.
+->Set the file privileges such that it cannot be open
+->
+
+==============COMPLETED===============
+->Reading from a file.
+->Formatting the read input.
+->

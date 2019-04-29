@@ -1,18 +1,10 @@
-#include<iostream>
-#include<fstream>
-#include<vector>
-#include<sstream>
+#include"Student.h"
 using namespace std;
-class data{
-  string name;
-  string roll_no;
-  string phone_no;
-  string mail_id;
-  friend class student;
-public:
-  data():name("-1"),roll_no("-1"),phone_no("-1"),mail_id("-1"){}
-  friend istream & operator>>(istream &in,data &s) //Final for printing the data and reading the entire data at one time
+
+  data::data():name("-1"),roll_no("-1"),phone_no("-1"),mail_id("-1"){}
+  istream & operator>>(istream &in,data &s) //Final for printing the data and reading the entire data at one time
   {
+    cin.ignore();
     cout<<"Enter the name: ";
     getline(in,s.name);
     cout<<"Enter the roll_no: ";
@@ -24,12 +16,12 @@ public:
     getline(in,s.mail_id);
     return in;
   }
-  friend ostream & operator<<(ostream &out,data &s)//works fine though edit the way it is wriiten in output file as reading misbehaves.
+  ostream & operator<<(ostream &out,data &s)//works fine though edit the way it is wriiten in output file as reading misbehaves.
   {
     out<<"Name: "<<s.name<<"\nRoll_no: "<<s.roll_no<<"\nPhone NUmber: "<<s.phone_no<<"\nEmail id: "<<s.mail_id<<endl<<endl;
     return out;
   }
-  void read(string temp)
+  void data::read(string temp)
   {
     stringstream inter(temp);
 
@@ -38,7 +30,7 @@ public:
           if(getline(inter,phone_no,':'))
             if(getline(inter,mail_id,':'));
   }
-  int save()
+  int data::save()
   {
     int temp;
     fstream file;
@@ -48,14 +40,9 @@ public:
     file.close();
     return temp;
   }
-};
 
-class student // an object of the class represents a class of students with maximum of 80 students;
-{
-  fstream file;
-  vector<int> index;
-public:
-  student()
+// an object of the class represents a class of students with maximum of 80 students
+  student::student()
   {
     string temp;
     file.open("studentlist.txt");
@@ -65,9 +52,9 @@ public:
     }while(getline(file,temp));
     file.close();
   }
-  void dis() //successfully indexed
+  void student::dis() //successfully indexed
   {
-    file.open("studentlist.txt");
+    file.open("studentlist.txt",ios::in);
     int i=0;
     string temp;
     data d;
@@ -83,6 +70,7 @@ public:
       else
       break;
     }
+    file.close();
   }
 /*  void accept()
   {
@@ -90,14 +78,14 @@ public:
     cin>>temp;
     Table.push_back(temp);
   }*/
-  void accept_registration() //to register a student
+  void student::accept_registration() //to register a student
   {
 
     data temp;
     cin>>temp;
     index.push_back(temp.save()+1);
   }
-  data search()//works perfectly properly constructs an object and returns it after succesffuly reading from a file.
+  data student::search()//works perfectly properly constructs an object and returns it after succesffuly reading from a file.
   {
     int roll_no;
     cout<<"Enter your roll no";
@@ -116,18 +104,28 @@ public:
       return temp;
     }
     else
-      cout<<"The record for the roll number does not exist";
-  }
+    {  data temp;
+      return temp;
+    }
 
-};
-int main()
+  }
+//void student_interface()
+	int main()
 {
   student s;
-  //s.accept();//verified working
-//  s.display();//verified working
-  //s.dis(); //verified working
- //s.accept_registration();// registers a student into the student list.
-  //s.dis();
-  s.search();
-  return 0;
+  int choice;
+  do{
+  cout<<"Enter your choice;";
+  cout<<"\n1.Register a student \n2.Search for a student \n3.Display \n4.Exit";
+  cin>>choice;
+  switch(choice)
+  {
+   //s.dis(); //verified working
+	  case 1:s.accept_registration();break;// registers a student into the student list.
+	   case 2:s.search();break;
+	  case 3:s.dis();break;
+	  case 4:return 0;
+default:cout<<"Enter the correct option";
+  }
+  }while(1);
 }

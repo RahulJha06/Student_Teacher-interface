@@ -8,15 +8,56 @@
 #include<fstream>
 #include<iomanip>
 using namespace std;
+class data{
+  string name;
+  string admin_id;
+  string phone_no;
+  string mail_id;
+  friend class admin;
+public:
+  data():name("-1"),roll_no("-1"),phone_no("-1"),mail_id("-1"){}
+  friend istream & operator>>(istream &in,data &s) //Final for printing the data and reading the entire data at one time
+  {
+    cout<<"Enter the name: ";
+    getline(in,s.name);
+    cout<<"Enter the roll_no: ";
+    in>>s.roll_no;
+    cin.ignore();
+    cout<<"Enter the phone_no: ";
+    getline(in,s.phone_no);
+    cout<<"Enter the mail_id: ";
+    getline(in,s.mail_id);
+    return in;
+  }
+  friend ostream & operator<<(ostream &out,data &s)//works fine though edit the way it is wriiten in output file as reading misbehaves.
+  {
+    out<<"Name: "<<s.name<<"\nRoll_no: "<<s.roll_no<<"\nPhone NUmber: "<<s.phone_no<<"\nEmail id: "<<s.mail_id<<endl<<endl;
+    return out;
+  }
+  void read(string temp)
+  {
+    stringstream inter(temp);
+
+      if(getline(inter,name,':'))
+        if(getline(inter,roll_no,':'))
+          if(getline(inter,phone_no,':'))
+            if(getline(inter,mail_id,':'));
+  }
+  int save()
+  {
+    int temp;
+    fstream file;
+    file.open("studentlist.txt",ios::app);
+    temp=file.tellg();
+    file<<name<<":"<<roll_no<<":"<<phone_no<<":"<<mail_id<<":"<<endl;
+    file.close();
+    return temp;
+  }
+};
 
 class Admin
 {
   fstream admin;
-  struct admin_detail
-  {
-    string name,phone_no,passwd="12345";
-    int priv_lvl=1;
-  };
   vector<admin_detail> list_admin;
 public:
    Admin()
@@ -24,17 +65,17 @@ public:
      list_admin.clear();
    }
    void read_admin()
-   { string s="";
-     admin_detail temp;
+   {
+     string s="";
+     data temp;
      admin.open("Admins.txt",ios::in);
      while(getline(admin,s))
      {
         if(s[0]!='#')//Work on comments later
         {
-         s+='\0';
          temp=seperate(s);
          list_admin.push_back(temp);
-       }
+        }
       }
      admin.close();
    }
@@ -85,11 +126,11 @@ int main()
 {
   Admin a;
   a.save();
-  //a.read_admin();// done
-  //a.display();//done
-  //a.accept_admin_details();
-  //a.display();
-  /*switch (choice)
+  a.read_admin();// done
+  a.display();//done
+  a.accept_admin_details();
+  a.display();
+  switch (choice)
   {
     case 1://Add a new admin.
     case 2://Edit the admin's detail.
@@ -97,5 +138,5 @@ int main()
     case 4://Editing the teachers details.
     case 5://Editing the Students details.
     case 6:return 0;
-  }*/
+  }
 }

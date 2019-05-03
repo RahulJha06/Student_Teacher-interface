@@ -125,8 +125,9 @@ data teacher::search()
 int main()
 {
 	teacher t;
+	data d;
 	t.dis();
-	//t.accept_registration();
+	t.accept_registration();
 
-//	t.search();
+	d=t.search();cout<<d;return 0;
 }

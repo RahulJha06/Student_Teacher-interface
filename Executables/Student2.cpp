@@ -100,7 +100,7 @@ using namespace std;
       getline(file,s);
       temp.read(s);
       file.close();
-      //cout<<temp;
+     // cout<<temp;
       return temp;
     }
     else
@@ -111,7 +111,7 @@ using namespace std;
   }
 //void student_interface()
 	int main()
-{
+{data d;
   student s;
   int choice;
   do{
@@ -122,7 +122,7 @@ using namespace std;
   {
    //s.dis(); //verified working
 	  case 1:s.accept_registration();break;// registers a student into the student list.
-	   case 2:s.search();break;
+	   case 2:d=s.search();cout<<d;break;
 	  case 3:s.dis();break;
 	  case 4:return 0;
 default:cout<<"Enter the correct option";
